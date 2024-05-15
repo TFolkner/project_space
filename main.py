@@ -5,9 +5,9 @@
 import asyncio
 import logging
 
-from aiogram import Bot, Dispatcher # type: ignore 
-from aiogram.enums.parse_mode import ParseMode # type: ignore 
-from aiogram.fsm.storage.memory import MemoryStorage # type: ignore 
+from aiogram import Bot, Dispatcher
+from aiogram.enums.parse_mode import ParseMode #       -- содержит настройки разметки сообщений (HTML, Markdown)
+from aiogram.fsm.storage.memory import MemoryStorage # -- хранилища данных для состояний пользователей
 
 import config # type: ignore 
 from handlers import router # type: ignore 
@@ -21,15 +21,19 @@ def read_data (sFile_data):
 	pFile_data = open (sFile_data, "r")
 	API_TOKEN = pFile_data.readline ()
 	return 0
+read_data ("data.txt")
 
 
 
 
+async def main():
+    bot = Bot(token=API_TOKEN, parse_mode=ParseMode.HTML)
+    dp = Dispatcher(storage=MemoryStorage())
+    dp.include_router(router)
+    await bot.delete_webhook(drop_pending_updates=True)
+    await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())
 
-def main ():
-	read_data ("data.txt")
-	return 0
 
-
-if __name__ == '__main__':
-	main()
+if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO)
+    asyncio.run(main())
