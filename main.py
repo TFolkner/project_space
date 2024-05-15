@@ -9,7 +9,6 @@ from aiogram import Bot, Dispatcher
 from aiogram.enums.parse_mode import ParseMode #       -- содержит настройки разметки сообщений (HTML, Markdown)
 from aiogram.fsm.storage.memory import MemoryStorage # -- хранилища данных для состояний пользователей
 
-import config # type: ignore 
 from handlers import router # type: ignore 
 
 
@@ -21,6 +20,7 @@ def read_data (sFile_data):
 	pFile_data = open (sFile_data, "r")
 	API_TOKEN = pFile_data.readline ()
 	return 0
+print (API_TOKEN + "\n")
 read_data ("data.txt")
 
 
