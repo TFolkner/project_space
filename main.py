@@ -12,9 +12,6 @@ from aiogram.fsm.storage.memory import MemoryStorage # -- хранилища д�
 from handlers import router # type: ignore 
 
 
-
-
-
 def read_data (sFile_data):
 	global API_TOKEN
 	pFile_data = open (sFile_data, "r")
