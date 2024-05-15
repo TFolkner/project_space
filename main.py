@@ -2,7 +2,7 @@
 # Тестовый комит
 
 
-from aiogram import Bot, Dispatcher, types, executor
+from aiogram import Bot, Dispatcher, types, executor # type: ignore
 # для aiogram pip install aiogram==2.25.2
 
 
