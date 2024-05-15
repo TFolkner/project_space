@@ -20,7 +20,6 @@ def read_data (sFile_data):
 	pFile_data = open (sFile_data, "r")
 	API_TOKEN = pFile_data.readline ()
 	return 0
-print (API_TOKEN + "\n")
 read_data ("data.txt")
 
 
