@@ -19,6 +19,7 @@ from handlers import router # type: ignore
 # 	return 0
 # read_data ("data.txt")
 
+# Удалено чтение токена из айла, пока хз почему не работает
 API_TOKEN = input ()
 
 
